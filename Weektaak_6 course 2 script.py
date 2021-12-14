@@ -1,16 +1,26 @@
-def soorteren(bestand):
-    '''opent het bestand, filtreert het bestand
+def filter(bestand):
+    '''Opent het bestand en filtert genen op basis van geselecteerde kenmerken
     input: het excel bestand
-    output: gefiltreerde gegevens
+    output: genen lijst
     '''
 
     lijst = []
     open_bestand = open(bestand, 'r')
+            # De eerste regel overslaan m.b.v readline()
     header = open_bestand.readline()
 
     for i in open_bestand:
+            # Split regels op tabs, voegt in een lijst
         regel = i.strip().split('\t')
 
+            # Aan welke eigenschappen een gen moet voldoen:
+            # 'variation reads' =< 5
+            # 'SNP state' = leeg (blank)
+            # 'Synonomous' = 'FALSE'
+            # 'Retinitis' in 'OMIM_DISEASE' kolom
+            # 'Gene component' = SA_SITE, EXON_REGION
+
+            # Het aantal kolommen > 61 (bij sommige regels ontbreken gegevens)
         if len(regel) > 61:
             if int(regel[6]) >= 5:
                 if regel[13] == '':
@@ -28,11 +38,6 @@ def soorteren(bestand):
                 continue
         else:
             continue
-            # variation reads =< 5
-            # SNP state is leeg (blank)
-            # Synonomous = 'FALSE'
-            # if 'Retinitis' in OMIM_DISEASE
-            # Gene component = SA_SITE, EXON_REGION
 
     open_bestand.close()
     print('Found genes:', lijst)
@@ -40,6 +45,6 @@ def soorteren(bestand):
 
 def main():
     bestand = '21213_exome_hcdiffs.txt'
-    soorteren(bestand)
+    filter(bestand)
 
 main()
