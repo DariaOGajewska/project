@@ -17,8 +17,8 @@ def filter(bestand):
             # 'variation reads' =< 5
             # 'SNP state' = leeg (blank)
             # 'Synonomous' = 'FALSE'
-            # 'Retinitis' in 'OMIM_DISEASE' kolom
             # 'Gene component' = SA_SITE, EXON_REGION
+            # 'Retinitis' in 'OMIM_DISEASE' kolom
 
             # Het aantal kolommen > 61 (bij sommige regels ontbreken gegevens)
         if len(regel) > 61:
