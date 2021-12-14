@@ -2,17 +2,18 @@ def openbestand(bestand):
     '''opent het bestand
     input: het excel bestand
     '''
+
+    lijst = []
     open_bestand = open(bestand, 'r')
-    #read = open_bestand.readline()
+    header = open_bestand.readline()
     for i in open_bestand:
-        regel = i.split('\t')
-        print(regel)
-        if regel[6] => 5:
+        regel = i.strip().split('\t')
+        if int(regel[6]) >= 5:
             if regel[13] == '':
                 if regel[44] == 'FALSE':
-                    if 'Retinitis' in regel[61]:
+                    if 'Retinitis' in regel:
                         if regel[33] == 'SA_SITE' or regel[33] == 'EXON_REGION':
-
+                            lijst.append(regel)
                     else:
                         continue
                 else:
@@ -27,6 +28,7 @@ def openbestand(bestand):
             # if 'Retinitis' in OMIM_DISEASE
             # Gene component = SA_SITE, EXON_REGION
     open_bestand.close()
+    print(lijst)
 
 
 def soorteren():
