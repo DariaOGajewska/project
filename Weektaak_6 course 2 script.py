@@ -16,8 +16,8 @@ def soorteren(bestand):
                 if regel[13] == '':
                     if regel[44] == 'FALSE':
                         if regel[33] == 'SA_SITE' or regel[33] == 'EXON_REGION':
-                            if 'Retinitis' in regel:
-                                lijst.append(regel)
+                            if 'Retinitis' in regel[61]:
+                                lijst.append(regel[24])
                         else:
                             continue
                     else:
@@ -35,7 +35,7 @@ def soorteren(bestand):
             # Gene component = SA_SITE, EXON_REGION
 
     open_bestand.close()
-    print(lijst)
+    print('Found genes:', lijst)
 
 
 def main():
