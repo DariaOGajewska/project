@@ -1,13 +1,16 @@
-def openbestand(bestand):
-    '''opent het bestand
+def soorteren(bestand):
+    '''opent het bestand, filtreert het bestand
     input: het excel bestand
+    output: gefiltreerde gegevens
     '''
 
     lijst = []
     open_bestand = open(bestand, 'r')
     header = open_bestand.readline()
+
     for i in open_bestand:
         regel = i.strip().split('\t')
+
         if int(regel[6]) >= 5:
             if regel[13] == '':
                 if regel[44] == 'FALSE':
@@ -31,15 +34,8 @@ def openbestand(bestand):
     print(lijst)
 
 
-def soorteren():
-    '''filtrert het excel bestand
-    input: excel bestand
-    output: gefiltreerde gegevens
-    '''
-
 def main():
     bestand = '21213_exome_hcdiffs.txt'
-    openbestand(bestand)
-    soorteren()
+    soorteren(bestand)
 
 main()
