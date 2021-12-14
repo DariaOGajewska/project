@@ -6,7 +6,6 @@ def openbestand():
     read = open_bestand.readline().split().strip()
     #for i in open_bestand:
 
-    # ...
 
 def soorteren():
     '''filtrert het excel bestand
