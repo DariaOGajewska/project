@@ -7,13 +7,14 @@ def openbestand(bestand):
     for i in open_bestand:
         #for i in range(0, 5):
         regel = i.strip().split('\t')
-    print(i)
-    print(regel)
+        #print(i)
+        print(regel)
             # variation reads =< 5
             # SNP state is leeg (blank)
             # Synonomous = 'FALSE'
             # if 'Retinitis' in OMIM_DISEASE
             # Gene component = SA_SITE, EXON_REGION
+    open_bestand.close()
 
 
 def soorteren():
